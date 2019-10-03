@@ -1,0 +1,14 @@
+MDBRow MDBCol form{
+    border-radius: 5px;
+    box-shadow: 0 0 5px #030
+}
+
+#email:focus{
+    border-color: plum;
+    box-shadow: 0 0 5px slateblue;
+}
+
+#senha:focus{
+    border-color: plum;
+    box-shadow: 0 0 5px slateblue;
+}

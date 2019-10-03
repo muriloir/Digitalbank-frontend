@@ -1,0 +1,12 @@
+#logo {
+    background-image: url("../../images/logo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 30px;
+    margin-right: 10px;
+}
+
+#nav-links{
+    color: #FFF;
+}
