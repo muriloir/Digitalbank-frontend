@@ -36,9 +36,9 @@ export default class FormPage extends Component{
     render(){
         return (
             <MDBContainer>
-                <MDBRow className="row justify-content-center">
+                <MDBRow className="row justify-content-center my-3">
                     <MDBCol className="mt-5 col-md-5">
-                        <form>
+                        <form className="my-2">
                             <p className="h4 text-center mb-4"> Acessar </p>
                             <label htmlFor="email" className="grey-text">
                             Digite seu e-mail:
@@ -61,8 +61,8 @@ export default class FormPage extends Component{
                             id="senha"
                             className="form-control"
                             />
-                            <div className="text-center mt-4">
-                            <MDBBtn className="purple-gradient" type="button" onClick= {this.logar} value="submit">Entrar</MDBBtn>
+                            <div className="text-center mt-3 mb-2">
+                            <MDBBtn className="pink darken-1" type="button" onClick= {this.logar} value="submit">Entrar</MDBBtn>
                             </div>
                         </form>
                     </MDBCol>

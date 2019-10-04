@@ -1,9 +1,8 @@
-import {Route} from 'react-router-dom';
-import{ Link } from 'react-router-dom';
 import * as axios from 'axios';
 import React, {Component} from 'react';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Card from '../components/Card';
 
 export default class ListagemClienteXConta extends Component{
     constructor(props){
@@ -24,19 +23,10 @@ export default class ListagemClienteXConta extends Component{
         return(
             <React.Fragment>
                 <NavBar/>
-                <h4>Clientes x Conta</h4>
-                <div>
-                    {this.state.clientesConta !== null ? this.state.clientesConta.map((item) => {
-                        return(
-                            <React.Fragment key={item.id}>
-                                <Route>
-                                    <div>
-                                        <Link to={`/conta/cliente/${item.id -1}`}>{item.codigo}</Link>
-                                    </div>
-                                </Route>
-                            </React.Fragment>
-                        );
-                    }) : ""}
+                <div className="mx-5">
+                    <h4 className="my-3">Clientes x Conta</h4>
+                    {this.state.clientesConta !== null && 
+                    <Card valor= {this.state.clientesConta} url="/conta/cliente/" imagem="https://pngimage.net/wp-content/uploads/2018/05/cliente-feliz-png-4.png"/>}
                 </div>
                 <Footer/>
             </React.Fragment>

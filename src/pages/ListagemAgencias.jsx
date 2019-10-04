@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';    
 import * as axios from 'axios'; 
+import Card from '../components/Card';
 
 export default class ListagemAgencias extends Component {
     constructor(props) {
@@ -30,6 +30,10 @@ export default class ListagemAgencias extends Component {
                 }
             })
             this.setState({ agencias: filtrarAgencias })
+        }if(evt.target.value === ''){
+            const config = {headers:{ Authorization : localStorage.getItem("Authorization")}}
+            axios.get('http://localhost:1337/agencias', (config)).then( response => {
+            this.setState({agencias : response.data.agencias})})
         }
     }
 
@@ -37,23 +41,14 @@ export default class ListagemAgencias extends Component {
         return (
             <React.Fragment>
                 <Navbar/>
-                <div>
-                    <h4>Agências</h4>
-                    <div>
-                        <input type="text" name="valor" placeholder="Filtrar" onBlur={this.filtrarValor} />
+                    <div className="mx-5">
+                        <h4 className="my-3">Agências</h4>
+                        <div>
+                            <input class="form-control col-md-3" type="text" name="valor" placeholder="Filtrar por nome" onChange={this.filtrarValor} />
+                        </div>
+                        {this.state.agencias !== null && 
+                        <Card valor= {this.state.agencias} url="/agencia/" imagem="https://image.flaticon.com/icons/png/512/2035/2035796.png"/>}
                     </div>
-                    {this.state.agencias ? this.state.agencias.map((item) => {
-                        return (
-                            <div key={item.id}>
-                                <Route>
-                                    <div>
-                                        <Link to={`/Agencia/${item.id - 1}`}>{item.nome}</Link>
-                                    </div>
-                                </Route>
-                            </div>
-                        );
-                    }) : ""}
-                </div>
                 <Footer />
             </React.Fragment>
         );
